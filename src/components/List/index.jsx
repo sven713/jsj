@@ -17,7 +17,7 @@ export default class List extends Component {
         <Item></Item> */}
         {
             todos.map((item)=>{
-                return <Item></Item>
+                return <Item item={item} key={item.id}></Item>
             })
         }
       </ul>
