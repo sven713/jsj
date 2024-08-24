@@ -42,13 +42,27 @@ export default class App extends Component {
         ]
     }
 
+    addTodos = (todoObj)=>{
+        console.log('1app-',todoObj)
+        const {todos} = this.state
+        const newTodos = [todoObj,...todos]
+        // let arr = this.state.todos.push(todoObj)
+        this.setState({
+            todos:newTodos
+        })
+    }
+
+    // a = (todoObj)=>{
+    //     console.log('app-',todoObj)
+    // }
+
     render() {
         const {todos} = this.state
         return (
             <div>
                 <div className="todo-container">
                     <div className="todo-wrap">
-                        <Header></Header>
+                        <Header addTodos={this.addTodos}></Header>
                         <List todos={todos}></List>
                         <Footer todos={todos}></Footer>
                     </div>
