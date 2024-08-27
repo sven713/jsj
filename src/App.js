@@ -52,6 +52,22 @@ export default class App extends Component {
         })
     }
 
+    checkedChanged = (itemObj)=> {
+        console.log('appChecked-',itemObj)
+
+        // #waring!!!!! 使用map实现一下 ...
+        let todos = this.state.todos
+        for(const item of todos){
+            if(item.id === itemObj.id){
+                item.done = itemObj.select
+                break
+            }
+        }
+        this.setState({
+            todos
+        })
+    }
+
     // a = (todoObj)=>{
     //     console.log('app-',todoObj)
     // }
@@ -63,7 +79,7 @@ export default class App extends Component {
                 <div className="todo-container">
                     <div className="todo-wrap">
                         <Header addTodos={this.addTodos}></Header>
-                        <List todos={todos}></List>
+                        <List todos={todos} checkedChanged={this.checkedChanged}></List>
                         <Footer todos={todos}></Footer>
                     </div>
                 </div>
