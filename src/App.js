@@ -56,15 +56,27 @@ export default class App extends Component {
         console.log('appChecked-',itemObj)
 
         // #waring!!!!! 使用map实现一下 ...
-        let todos = this.state.todos
-        for(const item of todos){
+        // let todos = this.state.todos
+        // for(const item of todos){
+        //     if(item.id === itemObj.id){
+        //         item.done = itemObj.select
+        //         break
+        //     }
+        // }
+
+
+        const todos = this.state.todos
+        const newTodos = todos.map((item)=> {
             if(item.id === itemObj.id){
-                item.done = itemObj.select
-                break
+                return {...item, done: itemObj.select}
+            }else {
+                return item
             }
-        }
+        })
+
+        console.log('ttttt')
         this.setState({
-            todos
+            todos : newTodos
         })
     }
 
