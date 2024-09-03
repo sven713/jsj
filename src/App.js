@@ -80,6 +80,35 @@ export default class App extends Component {
         })
     }
 
+    deleteItem = (item)=> {
+        console.log('home-item-',item)
+        const todos = this.state.todos
+        // const newTodos = todos.map((todoItem)=> {
+        //     // return todoItem.id != item.id
+        //     if(todoItem.id != item.id){
+        //         return todoItem
+        //     }
+        // })
+
+        // map不行, 用filt
+        const newTodos =todos.filter((todoItem)=>{
+            console.log(111111)
+            return todoItem.id != item.id
+        })
+
+        // let newTodos = []
+        // for(var todoItem of todos){
+        //     if(todoItem.id != item.id){
+        //         newTodos.push(todoItem)
+        //     }
+        // }
+
+        console.log('newTodos-',newTodos)
+        this.setState({
+            todos: newTodos
+        })
+    }
+
     // a = (todoObj)=>{
     //     console.log('app-',todoObj)
     // }
@@ -91,7 +120,7 @@ export default class App extends Component {
                 <div className="todo-container">
                     <div className="todo-wrap">
                         <Header addTodos={this.addTodos}></Header>
-                        <List todos={todos} checkedChanged={this.checkedChanged}></List>
+                        <List todos={todos} checkedChanged={this.checkedChanged} deleteItem={this.deleteItem}></List>
                         <Footer todos={todos}></Footer>
                     </div>
                 </div>

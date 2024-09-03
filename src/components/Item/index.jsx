@@ -35,8 +35,13 @@ export default class Item extends Component {
         return ()=>{
             console.log('handleChange--',e)
         }
+    }
 
-        
+    handleDelete = (e)=> {
+        console.log('删除',this.props.item)
+        this.props.deleteItem(this.props.item)
+        // return ()=>{
+        // }
     }
 
     render() {
@@ -47,7 +52,7 @@ export default class Item extends Component {
                     <input type="checkbox" defaultChecked={item.done} onChange={this.handleChange}/>
                     <span>{item.name}</span>
                 </label>
-                <button className="btn btn-danger" style={{ display: this.state.mouse ? 'block' : 'none' }}>删除</button>
+                <button className="btn btn-danger" style={{ display: this.state.mouse ? 'block' : 'none' }} onClick={this.handleDelete}>删除</button>
             </li>
         )
     }

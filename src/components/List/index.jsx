@@ -6,7 +6,8 @@ import  './index.css'
 export default class List extends Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    checkedChanged: PropTypes.func.isRequired
+    checkedChanged: PropTypes.func.isRequired,
+    deleteItem:PropTypes.func.isRequired
   }
     
 
@@ -20,7 +21,7 @@ export default class List extends Component {
         <Item></Item> */}
         {
             todos.map((item)=>{
-                return <Item item={item} key={item.id} checkedChanged={this.props.checkedChanged}></Item>
+                return <Item item={item} key={item.id} checkedChanged={this.props.checkedChanged} deleteItem={this.props.deleteItem}></Item>
             })
         }
       </ul>
