@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import {nanoid} from 'nanoid'
 
 import './index.css'
@@ -7,6 +7,10 @@ import './index.css'
 // console.log(nanoid())
 
 export default class Header extends Component {
+
+  static propTypes = {
+    addTodos: PropTypes.func.isRequired
+  }
 
   // handleKeyUp(e){ 不行,赋值语句+箭头函数
   handleKeyUp=(e)=>{
