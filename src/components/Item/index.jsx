@@ -39,9 +39,11 @@ export default class Item extends Component {
 
     handleDelete = (e)=> {
         console.log('删除',this.props.item)
-        this.props.deleteItem(this.props.item)
-        // return ()=>{
-        // }
+        
+        if(window.confirm('确定删除吗')){
+            this.props.deleteItem(this.props.item)
+
+        }
     }
 
     render() {
