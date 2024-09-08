@@ -80,6 +80,8 @@ export default class App extends Component {
         })
     }
 
+
+
     deleteItem = (item)=> {
         console.log('home-item-',item)
         const todos = this.state.todos
@@ -113,6 +115,29 @@ export default class App extends Component {
     //     console.log('app-',todoObj)
     // }
 
+    ifAllSelect=(select)=> {
+        console.log('cc---',select)
+        const todos = this.state.todos
+        const newTodos = todos.map((item)=> {
+            item.done = select
+            return item
+        })
+        this.setState({
+            todos:newTodos
+        })
+    }
+
+    doneDelete=()=> {
+        // const {todos} = this.state
+        const todos = this.state.todos
+        const newTodos = todos.filter((item)=> {
+            return item.done === false
+        })
+        this.setState({
+            todos:newTodos
+        })
+    }
+
     render() {
         const {todos} = this.state
         return (
@@ -121,7 +146,7 @@ export default class App extends Component {
                     <div className="todo-wrap">
                         <Header addTodos={this.addTodos}></Header>
                         <List todos={todos} checkedChanged={this.checkedChanged} deleteItem={this.deleteItem}></List>
-                        <Footer todos={todos}></Footer>
+                        <Footer todos={todos} ifAllSelect={this.ifAllSelect} doneDelete={this.doneDelete}></Footer>
                     </div>
                 </div>
             </div>
