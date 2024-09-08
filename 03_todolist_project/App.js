@@ -1,0 +1,156 @@
+
+import React, { Component } from "react";
+
+import Header from './components/Header'
+import Footer from "./components/Footer";
+import List from "./components/List";
+import './App.css'
+export default class App extends Component {
+
+    // const todos = [
+    //     {
+    //         id:'001',
+    //         name:'吃饭'
+    //     },
+    //     {
+    //         id:'002',
+    //         name:'睡觉'
+    //     }
+    // ]
+
+    state = {
+        todos:[
+            {
+                id:'001',
+                name:'吃饭',
+                done:true
+            },
+            {
+                id:'002',
+                name:'睡觉',
+                done:false
+            },
+            {
+                id:'003',
+                name:'写代码',
+                done:false
+            },{
+                id:'004',
+                name:'逛街',
+                done:false
+            }
+        ]
+    }
+
+    addTodos = (todoObj)=>{
+        console.log('1app-',todoObj)
+        const {todos} = this.state
+        const newTodos = [todoObj,...todos]
+        // let arr = this.state.todos.push(todoObj)
+        this.setState({
+            todos:newTodos
+        })
+    }
+
+    checkedChanged = (itemObj)=> {
+        console.log('appChecked-',itemObj)
+
+        // #waring!!!!! 使用map实现一下 ...
+        // let todos = this.state.todos
+        // for(const item of todos){
+        //     if(item.id === itemObj.id){
+        //         item.done = itemObj.select
+        //         break
+        //     }
+        // }
+
+
+        const todos = this.state.todos
+        const newTodos = todos.map((item)=> {
+            if(item.id === itemObj.id){
+                return {...item, done: itemObj.select}
+            }else {
+                return item
+            }
+        })
+
+        console.log('ttttt')
+        this.setState({
+            todos : newTodos
+        })
+    }
+
+
+
+    deleteItem = (item)=> {
+        console.log('home-item-',item)
+        const todos = this.state.todos
+        // const newTodos = todos.map((todoItem)=> {
+        //     // return todoItem.id != item.id
+        //     if(todoItem.id != item.id){
+        //         return todoItem
+        //     }
+        // })
+
+        // map不行, 用filt
+        const newTodos =todos.filter((todoItem)=>{
+            console.log(111111)
+            return todoItem.id != item.id
+        })
+
+        // let newTodos = []
+        // for(var todoItem of todos){
+        //     if(todoItem.id != item.id){
+        //         newTodos.push(todoItem)
+        //     }
+        // }
+
+        console.log('newTodos-',newTodos)
+        this.setState({
+            todos: newTodos
+        })
+    }
+
+    // a = (todoObj)=>{
+    //     console.log('app-',todoObj)
+    // }
+
+    ifAllSelect=(select)=> {
+        console.log('cc---',select)
+        const todos = this.state.todos
+        const newTodos = todos.map((item)=> {
+            item.done = select
+            return item
+        })
+        this.setState({
+            todos:newTodos
+        })
+    }
+
+    doneDelete=()=> {
+        // const {todos} = this.state
+        const todos = this.state.todos
+        const newTodos = todos.filter((item)=> {
+            return item.done === false
+        })
+        this.setState({
+            todos:newTodos
+        })
+    }
+
+    render() {
+        const {todos} = this.state
+        return (
+            <div>
+                <div className="todo-container">
+                    <div className="todo-wrap">
+                        <Header addTodos={this.addTodos}></Header>
+                        <List todos={todos} checkedChanged={this.checkedChanged} deleteItem={this.deleteItem}></List>
+                        <Footer todos={todos} ifAllSelect={this.ifAllSelect} doneDelete={this.doneDelete}></Footer>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
