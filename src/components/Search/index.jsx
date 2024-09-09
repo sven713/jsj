@@ -17,6 +17,7 @@ export default class Search extends Component {
     axios.get(`http://localhost:3000/search/users?q=${inputStr}`).then(
       response => {
         console.log('成功了',response.data)
+        this.props.showList(response.data.items)
       },
       error =>{
           console.log('失败了',error )
