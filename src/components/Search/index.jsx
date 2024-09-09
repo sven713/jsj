@@ -13,7 +13,8 @@ export default class Search extends Component {
 
     console.log('!!!!',inputStr)
     // https://api.github.com/search/users?q=xxxxxx
-    axios.get(`https://api.github.com/search/users?q=${inputStr}`).then(
+    // http://localhost:5000/search/users2
+    axios.get(`http://localhost:3000/search/users?q=${inputStr}`).then(
       response => {
         console.log('成功了',response.data)
       },
