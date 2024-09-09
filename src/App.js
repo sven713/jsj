@@ -5,14 +5,15 @@ import List from './components/List'
 export default class gitDemo extends Component {
 
   state = {
-    userArr:[]
+    userArr:[],
+    isFirst: true,
+    isLoading:false,
+    err:''
   }
 
-  showList = (arr)=> {
-    console.log('aapp',arr)
-    this.setState({
-      userArr: arr
-    })
+  updataState = (stateObj)=> {
+    console.log('aapp',stateObj)
+    this.setState(stateObj)
   }
 
   render() {
@@ -20,8 +21,8 @@ export default class gitDemo extends Component {
     return (
         <div className="container">
         
-            <Search showList={this.showList}></Search>
-            <List userArr={userArr}></List>
+            <Search updataState={this.updataState}></Search>
+            <List {...this.state}></List>
         
       </div>
     )
