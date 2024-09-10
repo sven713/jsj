@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
+import PubSub from 'pubsub-js'
 import './index.css'
 
 export default class List extends Component {
 
-  // state = {
-  //   userArr:[],
-  //   isFirst: true,
-  //   isLoading:false,
-  //   err:''
-  // }
+  state = {
+    userArr:[],
+    isFirst: true,
+    isLoading:false,
+    err:''
+  }
+
+
+  componentDidMount(){
+    var token = PubSub.subscribe('kUpdata', (_,data)=> {
+      console.log('收通知', _, data );
+      this.setState(data)
+    });
+  }
+
+
 
   render() {
-    const { userArr,isFirst,isLoading,err } = this.props
+
+    const { userArr,isFirst,isLoading,err } = this.state
     return (
       <div className="row">
 

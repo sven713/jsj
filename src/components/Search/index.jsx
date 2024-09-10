@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+
+import PubSub from 'pubsub-js'
+
 export default class Search extends Component {
 
 
@@ -9,20 +12,17 @@ export default class Search extends Component {
 
   search = ()=>{
     // 获取input值
-    const { inputStr } = this.state
+    const { inputStr } = this.state    
 
-    console.log('!!!!',inputStr)
-    // https://api.github.com/search/users?q=xxxxxx
-    // http://localhost:5000/search/users2
-
-    this.props.updataState({
-      isLoading:true
-    })
+    PubSub.publish('kUpdata',{isLoading:true})
+    
 
     axios.get(`http://localhost:3000/search/users?q=${inputStr}`).then(
       response => {
         console.log('成功了',response.data)
-        this.props.updataState({
+        
+
+        PubSub.publish('kUpdata',{
           userArr: response.data.items,
           isFirst:false,
           isLoading:false
@@ -30,7 +30,8 @@ export default class Search extends Component {
       },
       error =>{
           console.log('失败了',error )
-          this.props.updataState({
+          
+          PubSub.publish('kUpdata',{
             err:error.message,
             isLoading:false,
             isFirst:false,
@@ -40,12 +41,6 @@ export default class Search extends Component {
 
   }
 
-  // state = {
-  //   userArr:[],
-  //   isFirst: true,
-  //   isLoading:false,
-  //   err:''
-  // }
 
   //todo:使用ref
   handleInput = (e)=> {
