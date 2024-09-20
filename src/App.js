@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import Search from './components/Search'
-import List from './components/List'
+
 
 export default class gitDemo extends Component {
 
 
   render() {
     return (
-        <div className="container">
+        <div >
         
-            <Search ></Search>
-            <List></List>
+            App...
       </div>
     )
   }
