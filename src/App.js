@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import {NavLink ,Route} from 'react-router-dom'
+import {Route,Switch} from 'react-router-dom'
 
 import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
+import Test from './pages/Test'
 import MyNavLink from './components/MyNavLink/MyNavLink'
 
 export default class gitDemo extends Component {
@@ -33,8 +34,11 @@ export default class gitDemo extends Component {
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
+                <Switch>
                 <Route path='/about' component={About}></Route>
                 <Route path='/home' component={Home}></Route>
+                <Route path='/home' component={Test}></Route>
+                </Switch>
               </div>
             </div>
           </div>
