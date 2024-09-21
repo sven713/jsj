@@ -4,11 +4,13 @@ import {NavLink ,Route} from 'react-router-dom'
 import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
+import MyNavLink from './components/MyNavLink/MyNavLink'
 
 export default class gitDemo extends Component {
-
+  
 
   render() {
+
     return (
       <div id="root">
       <div>
@@ -21,13 +23,11 @@ export default class gitDemo extends Component {
         <div className="row">
           <div className="col-xs-2 col-xs-offset-2">
             <div className="list-group">
-              {/* <a className="list-group-item active" href="./about.html">About</a>
-              <a className="list-group-item" href="./home.html">Home</a> */}
-              {/* <BrowserRouter> */}
-                <NavLink activeClassName='aClass' className='list-group-item' to='/about'>about</NavLink>
-                <NavLink activeClassName='aClass' className='list-group-item' to='/home'>home</NavLink>
-              {/* </BrowserRouter> */}
-
+              
+                {/* <NavLink activeClassName='aClass' className='list-group-item' to='/about'>about</NavLink>
+                <NavLink activeClassName='aClass' className='list-group-item' to='/home'>home</NavLink> */}
+                <MyNavLink to='/about' title='about' children='about!'/>
+                <MyNavLink to='/home' title='home' children='home!!'/>
             </div>
           </div>
           <div className="col-xs-6">
