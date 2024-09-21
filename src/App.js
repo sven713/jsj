@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import {Link , BrowserRouter} from 'react-router-dom'
+import {Link , BrowserRouter,Route} from 'react-router-dom'
+
+import About from './components/About'
+import Home from './components/Home'
 
 export default class gitDemo extends Component {
 
@@ -18,17 +21,18 @@ export default class gitDemo extends Component {
             <div className="list-group">
               {/* <a className="list-group-item active" href="./about.html">About</a>
               <a className="list-group-item" href="./home.html">Home</a> */}
-              <BrowserRouter>
+              {/* <BrowserRouter> */}
                 <Link className='list-group-item' to='/about'>about</Link>
                 <Link className='list-group-item' to='/home'>home</Link>
-              </BrowserRouter>
+              {/* </BrowserRouter> */}
 
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
-                <h3>????</h3>
+                <Route path='/about' component={About}></Route>
+                <Route path='/home' component={Home}></Route>
               </div>
             </div>
           </div>
