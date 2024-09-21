@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link ,Route} from 'react-router-dom'
+import {NavLink ,Route} from 'react-router-dom'
 
 import About from './pages/About'
 import Home from './pages/Home'
@@ -24,8 +24,8 @@ export default class gitDemo extends Component {
               {/* <a className="list-group-item active" href="./about.html">About</a>
               <a className="list-group-item" href="./home.html">Home</a> */}
               {/* <BrowserRouter> */}
-                <Link className='list-group-item' to='/about'>about</Link>
-                <Link className='list-group-item' to='/home'>home</Link>
+                <NavLink activeClassName='aClass' className='list-group-item' to='/about'>about</NavLink>
+                <NavLink activeClassName='aClass' className='list-group-item' to='/home'>home</NavLink>
               {/* </BrowserRouter> */}
 
             </div>
