@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import {Link , BrowserRouter,Route} from 'react-router-dom'
+import {Link ,Route} from 'react-router-dom'
 
-import About from './components/About'
-import Home from './components/Home'
+import About from './pages/About'
+import Home from './pages/Home'
+import Header from './components/Header'
 
 export default class gitDemo extends Component {
 
@@ -13,7 +14,8 @@ export default class gitDemo extends Component {
       <div>
         <div className="row">
           <div className="col-xs-offset-2 col-xs-8">
-            <div className="page-header"><h2>React Router Demo</h2></div>
+            
+            <Header></Header>
           </div>
         </div>
         <div className="row">

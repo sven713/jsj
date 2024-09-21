@@ -27,6 +27,7 @@ export default class Footer extends Component {
     }
 
     render() {
+        
         const {todos} = this.props
         const doneArr = todos.filter((item)=>{
             return item.done
