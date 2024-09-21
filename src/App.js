@@ -25,16 +25,16 @@ export default class gitDemo extends Component {
             <div className="list-group">
               
                
-                <MyNavLink to='/at/about' title='about' children='about!'/>
-                <MyNavLink to='/at/home' title='home' children='home!!'/>
+                <MyNavLink to='/about' title='about' children='about!'/>
+                <MyNavLink to='/home/a/b' title='home' children='home!!'/>
             </div>
           </div>
           <div className="col-xs-6">
             <div className="panel">
               <div className="panel-body">
                 <Switch>
-                <Route path='/at/about' component={About}></Route>
-                <Route path='/at/home' component={Home}></Route>
+                  <Route  path='/about' component={About}></Route>
+                  <Route exact path='/home' component={Home}></Route>
                 </Switch>
               </div>
             </div>
