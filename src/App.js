@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route,Switch} from 'react-router-dom'
+import {Route,Switch, Redirect} from 'react-router-dom'
 
 import About from './pages/About'
 import Home from './pages/Home'
@@ -26,7 +26,7 @@ export default class gitDemo extends Component {
               
                
                 <MyNavLink to='/about' title='about' children='about!'/>
-                <MyNavLink to='/home/a/b' title='home' children='home!!'/>
+                <MyNavLink to='/home' title='home' children='home!!'/>
             </div>
           </div>
           <div className="col-xs-6">
@@ -34,7 +34,8 @@ export default class gitDemo extends Component {
               <div className="panel-body">
                 <Switch>
                   <Route  path='/about' component={About}></Route>
-                  <Route exact path='/home' component={Home}></Route>
+                  <Route  path='/home' component={Home}></Route>
+                  <Redirect to='/home'></Redirect>
                 </Switch>
               </div>
             </div>
