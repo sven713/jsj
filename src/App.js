@@ -35,7 +35,7 @@ export default class gitDemo extends Component {
                 <Switch>
                   <Route  path='/about' component={About}></Route>
                   <Route  path='/home' component={Home}></Route>
-                  <Redirect to='/home'></Redirect>
+                  <Redirect to='/about'></Redirect>
                 </Switch>
               </div>
             </div>
