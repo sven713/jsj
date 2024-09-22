@@ -34,16 +34,17 @@ export default class Message extends Component {
             msgArr.map((msg)=> {
               return (
                 <li key={msg.id}>
-                  {/* <a href="/message/3">{msg.title}</a> */}
-                  <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
+                  {/* param传参: */}
+                  {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
+                  <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
+
                 </li>
               )
             })
           }
         </ul>
-        <Route path='/home/message/detail/:id/:title2' component={Detail}></Route>
+        <Route path='/home/message/detail/' component={Detail}></Route>
 
-        {/* <Detail></Detail> */}
       </div>
     )
   }

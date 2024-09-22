@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import qs from 'qs'
 
 const detailData = [
   {
@@ -18,17 +19,20 @@ const detailData = [
 export default class Detail extends Component {
   render() {
 
-    console.log('detail接,',this.props)
-    const {params} = this.props.match
+    console.log('detail接--,',this.props)
+    const {search} = this.props.location
+    const resultT = qs.parse(search.slice(1))
+    console.log('res--',resultT)
+    // const {params} = this.props.match
 
     const result = detailData.find((msg)=> {
-      return msg.id == params.id
+      return msg.id == resultT.id
     })
 
     return (
       <div>
         <li>ID:{result.id}</li>
-        <li>Title:{params.title2}</li>
+        <li>Title:{resultT.title}</li>
         <li>Content:{result.content}</li>
       </div>
     )
