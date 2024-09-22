@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Router,Switch } from 'react-router-dom/cjs/react-router-dom.min'
+import { Route, Router,Switch, Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 import MyNavLink from '../../components/MyNavLink/MyNavLink'
 
@@ -32,6 +32,7 @@ export default class Home extends Component {
         <Switch>
           <Route path='/home/news' component={News}></Route>
           <Route path='/home/message' component={Message}></Route>
+          <Redirect to='/home/message'></Redirect>
         </Switch>
       </div>
     )
