@@ -23,6 +23,15 @@ export default class Message extends Component {
     ]
   }
 
+  replaceShow = (id, title)=> {
+    console.log('ddddd',id,title)
+    this.props.history.replace(`/home/message/detail/${id}/${title}`)
+  }
+
+  pushShow = (id, title)=> {
+    // console.log('ddddd',id,title)
+    this.props.history.push(`/home/message/detail/${id}/${title}`)
+  }
 
   render() {
     const {msgArr} = this.state
@@ -34,20 +43,16 @@ export default class Message extends Component {
             msgArr.map((msg)=> {
               return (
                 <li key={msg.id}>
-                  {/* param传参: */}
-                  {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
-                  {/* search传参 */}
-                  {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link> */}
-
-                  {/* state传参  pathname不是驼峰!!!!! */}
-                  <Link replace to={{pathname:'/home/message/detail', state:{id:msg.id, title:msg.title}}}>{msg.title}</Link>
-
+                 
+                  <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link>
+                  &nbsp;<button onClick={()=>this.pushShow(msg.id, msg.title)}>push查看</button>
+                  &nbsp;<button onClick={()=>this.replaceShow(msg.id, msg.title)}>replace查看</button>
                 </li>
               )
             })
           }
         </ul>
-        <Route path='/home/message/detail' component={Detail}></Route>
+        <Route path='/home/message/detail/:id/:title' component={Detail}></Route>
 
       </div>
     )

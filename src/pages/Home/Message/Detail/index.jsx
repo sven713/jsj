@@ -23,9 +23,9 @@ export default class Detail extends Component {
     // const {search} = this.props.location
     // const resultT = qs.parse(search.slice(1))
     // console.log('res--',resultT)
-    // const {params} = this.props.match
+    const {id, title} = this.props.match.params
 
-    const {id, title} = this.props.location.state
+    // const {id, title} = this.props.location.state
 
     const result = detailData.find((msg)=> {
       return msg.id === id
