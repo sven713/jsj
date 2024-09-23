@@ -36,14 +36,18 @@ export default class Message extends Component {
                 <li key={msg.id}>
                   {/* param传参: */}
                   {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
-                  <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
+                  {/* search传参 */}
+                  {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link> */}
+
+                  {/* state传参  pathname不是驼峰!!!!! */}
+                  <Link to={{pathname:'/home/message/detail', state:{id:msg.id, title:msg.title}}}>{msg.title}</Link>
 
                 </li>
               )
             })
           }
         </ul>
-        <Route path='/home/message/detail/' component={Detail}></Route>
+        <Route path='/home/message/detail' component={Detail}></Route>
 
       </div>
     )
