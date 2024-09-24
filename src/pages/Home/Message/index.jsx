@@ -27,13 +27,18 @@ export default class Message extends Component {
     console.log('ddddd',id,title)
     // this.props.history.replace(`/home/message/detail/${id}/${title}`)
 
-    this.props.history.replace(`/home/message/detail?id=${id}&title=${title}`)
+    // this.props.history.replace(`/home/message/detail?id=${id}&title=${title}`)
+    this.props.history.replace(`/home/message/detail`,{id,title})
+
+
   }
 
   pushShow = (id, title)=> {
     // console.log('ddddd',id,title)
     // this.props.history.push(`/home/message/detail/${id}/${title}`)
-    this.props.history.push(`/home/message/detail?id=${id}&title=${title}`)
+    // this.props.history.push(`/home/message/detail?id=${id}&title=${title}`)
+    this.props.history.push(`/home/message/detail`,{id,title})
+
   }
 
   render() {
@@ -48,7 +53,8 @@ export default class Message extends Component {
                 <li key={msg.id}>
                  
                   {/* <Link to={`/home/message/detail/${msg.id}/${msg.title}`}>{msg.title}</Link> */}
-                  <Link to={`/home/message/detail?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link>
+                  {/* <Link to={`/home/message/detail?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link> */}
+                  <Link replace={false} to={{pathname:'/home/message/detail', state:{id:msg.id, title:msg.title}}}>{msg.title}</Link>
 
                   &nbsp;<button onClick={()=>this.pushShow(msg.id, msg.title)}>push查看</button>
                   &nbsp;<button onClick={()=>this.replaceShow(msg.id, msg.title)}>replace查看</button>
