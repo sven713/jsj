@@ -41,6 +41,18 @@ export default class Message extends Component {
 
   }
 
+  goback = ()=> {
+    this.props.history.goBack()
+  }
+
+  foward = ()=> {
+    this.props.history.goForward()
+  }
+  
+  goMethod = ()=> {
+    this.props.history.go(-2)
+  }
+
   render() {
     const {msgArr} = this.state
     return (
@@ -66,6 +78,9 @@ export default class Message extends Component {
         {/* <Route path='/home/message/detail/:id/:title' component={Detail}></Route> */}
         <Route path='/home/message/detail' component={Detail}></Route>
 
+        <button onClick={this.goback}>后退</button>
+        <button onClick={this.foward}>前进</button>
+        <button onClick={this.goMethod}>GO</button>
       </div>
     )
   }
