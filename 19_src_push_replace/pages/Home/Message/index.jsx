@@ -40,7 +40,7 @@ export default class Message extends Component {
                   {/* <Link to={`/home/message/detail/?id=${msg.id}&title=${msg.title}`}>{msg.title}</Link> */}
 
                   {/* state传参  pathname不是驼峰!!!!! */}
-                  <Link replace to={{pathname:'/home/message/detail', state:{id:msg.id, title:msg.title}}}>{msg.title}</Link>
+                  <Link push={true} to={{pathname:'/home/message/detail', state:{id:msg.id, title:msg.title}}}>{msg.title}</Link>
 
                 </li>
               )

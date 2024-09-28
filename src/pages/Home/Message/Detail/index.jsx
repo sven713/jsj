@@ -19,7 +19,7 @@ const detailData = [
 export default class Detail extends Component {
   render() {
 
-    console.log('detail接--,',this.props)
+    console.log('detail接-?-,',this.props)
 
     // const {search} = this.props.location
     // const resultT= qs.parse(search.slice(1))
