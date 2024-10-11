@@ -8,5 +8,5 @@ import App from './App'
 
 
 ReactDom.render(<App>
-  App..<button>点我</button>
+  
 </App>,document.getElementById('root'))
