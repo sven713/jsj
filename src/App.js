@@ -8,6 +8,7 @@ export default class gitDemo extends Component {
 
     return (
       <div id="root">
+        
         App..<button >点我</button>
         <Button type='primary'>ppp button</Button>
       </div>
